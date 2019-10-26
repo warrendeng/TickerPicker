@@ -1,0 +1,2 @@
+# TickerPicker
+stonk picker
