@@ -26,9 +26,8 @@ def getSentiment(stocks):
 		tempMap = tickList[tick]
 		stockList.append(tempMap['name'])
 	sentimentDict = {}
-
-	bannedList = ['Inc', 'Corp', 'LLC', 'Co', "Ltd"]
 	infiniteCtr = 0
+	bannedList = ['Inc', 'Corp', 'LLC', 'Co', "Ltd"]
 	while(len(stockList) > 0):
 		infiniteCtr += 1
 		stock = stockList.pop()
@@ -46,9 +45,8 @@ def getSentiment(stocks):
 			sentimentMagnitude += sentiment.magnitude
 			ctr += 1
 		if (infiniteCtr > 20):
-			print('Error: infinite loop')
 			break
-		if (ctr <= 5):
+		if (ctr == 0):
 			temp = stock.split()
 			ban = False
 			for word in bannedList:
@@ -56,8 +54,6 @@ def getSentiment(stocks):
 					temp.remove(word)
 					ban = True
 					stockList.append(''.join(temp))
-					break
-			stockList.append(stock.strip())
 		else:
 			sentimentDict[stock] = [sentimentScore / ctr, sentimentMagnitude / ctr]
 	print(sentimentDict)
