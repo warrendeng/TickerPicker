@@ -29,8 +29,7 @@ def queryList():
 
 @app.route('/query/<ticker>')
 def querySingle(ticker=None):
-    getSentiment(ticker)
-    return "done"
+    return getSentiment(ticker)
 
 if __name__ == "__main__":
     app.run()

@@ -81,5 +81,3 @@ def getSentiment(stocks):
 			sentimentDict[num] = [sentimentScore / ctr, sentimentMagnitude / ctr]
 	print(sentimentDict)
 	return sentimentDict
-
-getSentiment('msft, amzn, aapl')
