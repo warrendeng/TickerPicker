@@ -28,7 +28,7 @@ def getSentiment(stocks):
 	sentimentDict = {}
 
 	bannedList = ['Inc', 'Corp', 'LLC', 'Co', "Ltd"]
-	int infiniteCtr = 0
+	infiniteCtr = 0
 	while(len(stockList) > 0):
 		infiniteCtr += 1
 		stock = stockList.pop()
