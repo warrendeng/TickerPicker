@@ -35,7 +35,7 @@ def getSentiment(stocks):
 		tempMap = tickMap[stockMap[stock]]
 		num = tempMap['gsid']
 		query = {'q': stock, 'result_type': 'popular', 'count': 100, 'lang': 'en'}
-		sentimentScore = sentimentMagnitude = ctr = 0
+		sentimentScore = ctr = 0
 		for status in twitter.search(**query)['statuses']:
 			text = status['text']
 			document = types.Document(
@@ -44,8 +44,7 @@ def getSentiment(stocks):
 
 			# Detects the sentiment of the text
 			sentiment = client.analyze_sentiment(document=document).document_sentiment
-			sentimentScore += sentiment.score
-			sentimentMagnitude += sentiment.magnitude
+			sentimentScore = sentimentScore + (sentiment.score * sentiment.magnitude)
 			ctr += 1
 		if (infiniteCtr > 20):
 			break
@@ -70,14 +69,27 @@ def getSentiment(stocks):
 
 					# Detects the sentiment of the text
 					sentiment = client.analyze_sentiment(document=document).document_sentiment
-					sentimentScore += sentiment.score
-					sentimentMagnitude += sentiment.magnitude
+					sentimentScore = sentimentScore + (sentiment.score * sentiment.magnitude)
 					ctr += 1
-				if (ctr == 0):
-					sentimentDict[num] = [0,0]
-				else:
-					sentimentDict[num] = [sentimentScore / ctr, sentimentMagnitude / ctr]
+			else:
+				newStock = temp[0]
+				query = {'q': newStock, 'result_type': 'popular', 'count': 100, 'lang': 'en'}
+				sentimentScore = sentimentMagnitude = ctr = 0
+				for status in twitter.search(**query)['statuses']:
+					text = status['text']
+					document = types.Document(
+					    content=text,
+					    type=enums.Document.Type.PLAIN_TEXT)
+
+					# Detects the sentiment of the text
+					sentiment = client.analyze_sentiment(document=document).document_sentiment
+					sentimentScore = sentimentScore + (sentiment.score * sentiment.magnitude)
+					ctr += 1
+			if (ctr == 0):
+				sentimentDict[num] = [0,0]
+			else:
+				sentimentDict[num] = sentimentScore / ctr	
 		else:
-			sentimentDict[num] = [sentimentScore / ctr, sentimentMagnitude / ctr]
+			sentimentDict[num] = sentimentScore / ctr
 	print(sentimentDict)
 	return sentimentDict
