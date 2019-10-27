@@ -98,4 +98,4 @@ def getSentiment(stocks):
 			buy = -1
 		else:
 			buy = 0
-	return buy
+	return sentimentDict
