@@ -1,26 +1,36 @@
 
 from flask import Flask
 from flask import request
+from flask import json
 app = Flask(__name__)
 
 from stockTwitter import getSentiment
 
 @app.route("/")
 def home():
-    return "Try this route:"
+    return "Try querring at /query/<ticker>!"
 
-# @app.route('/queryList', methods=['GET'])
-# def login():
-#     if request.method == 'GET':
-#         tickerList = request.data
-#         rv = [getSentiment(s) for s in tickerList]
-#         return rv
-#     else:
-#         return "bad"
+@app.route('/queryList', methods=['GET'])
+def queryList():
+    if request.method == 'GET':
+        tickerList = request.data
+        # rv = [getSentiment(s) for s in tickerList]
+        print("PRINTING DATA")
+        print(type(json.dumps(request.data)))
+        print("END PRINTING DATA")
+        response = app.response_class(
+          response=json.dumps(request.data["data"]),
+          status=200,
+          mimetype='application/json'
+        )
+        return response
+    else:
+        return "bad"
 
 @app.route('/query/<ticker>')
-def login(ticker=None):
-    return getSentiment(ticker)
+def querySingle(ticker=None):
+    getSentiment(ticker)
+    return "done"
 
 if __name__ == "__main__":
     app.run()
