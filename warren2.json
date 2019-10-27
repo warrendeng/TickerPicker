@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tickerpicker",
+  "private_key_id": "e34401627a45ff16747e3fd6433fb123910a1f69",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCf7o89V4s+Vpkj\nTdl33GIZMjGk03cApZyuBZWvDXILey3PyI9L/T+jN3NmMN3LDl8Dk1W8vuYJBA2S\n3MpBy+5IvkTvrCHdA0FNUbD/wSDpEGFziCPac+nkbzUWl71p8k/sM3ltXimZai/D\nKpUXdoBr1A0rDFj9r/mBQHLWLIsRAdFm3Qfm2EUyZyUIFww8E+IM3k7dNZ3AOTF9\npR0cTNf01MZMMX4F/G0bGCIHEqhVpQWJSifp+Is2tJdXxinA0U+77NTwqJ0VS3cw\nuOWSqVY1Tl8iwXZ+VJzrWf5p9MIEaXDt5FZXwmtFFF5HQc+1fjHE4HBv+kItxpUs\nWU8PO22/AgMBAAECggEAOYzf0IQTIDCLVK/r5HzSdByizpwlw37U3a42ydI9yrHd\nr1qNbhvIbZRDm29UMICQYjn/bTcIkg/6TnHS+lBHA7gsGE7JtL06H3eZCL9Xd2ak\nmq1PsYlqjgASi3m4+Enwxp9TP67Vq1YRr9o/4jyLQ8H/pxD/aPKNBxzI9hb7R/fc\nZeJrt8tX1M1RbTSQid2qTLSqoBNp26RytQ+3Y6xA2WMbAf8zLrv+H1DkbYAF3THk\nxbitPXuxgygKccQaP6qQCjWZjCwD8FaITOqZ0xs8WZygTmn7IoNH8VLeqQKmqzfb\nN9CLRDQiif8HgFiG14MBnFWuIqvtuyoZlN7r83Li0QKBgQDbf48WSz4xSdn1vaJw\np18DisBED5KYDhzccCfZkgD0xU7wdilsH2aLK5YCgnk0BFMRisa01qac49prylPJ\nZhBCTvFxD1/l+1PXNUFt/CZA6tocVKaBsdzNLwFdE28ABiBVJCfMHy3YE8wV8JiW\nyv/gqqQc18XNkRMsbqQaAYdiBwKBgQC6hyaAAUhXcsfuVomayKWVSQ/4XOpJsU3W\n4FOmkZWOeZa+WBjh/0HzfDbYNJSN/7Z5K8DefJhhukwJFAkRteWmFgCoWMMQWYUS\nt7sWZJlMiPWGx8jO86w6Bic9J+rbQUSOMgPNzwe4PXo+d41dmz2eNvSfUTBhYuuF\n2CgcvppIiQKBgQCnH4FnvRR2XL+ajq+ezKDYRo3LhHveUGiDItYEn1khBRXsmltB\nmsrtzdriwEreYyiIY7yVthWXwRjuF1giMRbSFd9ZcRZYOjsE0eSmhGTv6qD1DzLT\n7wOqKk8EeiZ6wy9dBDFVBqxWKASs88qKjbezbNmVqGhP81TA8OD7eAyHgwKBgEll\nfOTJnGmspLdIHgVmBqHjigE0rowo1HRE+SWGC89wULy9da0YAB+LNRmGNx5ZDLhJ\nWy8w39U0tU6tL5RkeuULq16S7s60KwTefyOkmh3flp1eZ8nnYFHEshQCbQuxdwRs\n8co+OM9qgXurF1lKCMkE3uUB0YPApOSZ1c7ZwWPhAoGAOBhkV5OPYashpioQXctc\nBAJBc+KJcaKPgMBPjnur8XUJKLuIIACN8N+WEgd/BZegcAPb3prcXSEjLWafdak2\nwL6RaCwfOd35vrUxQNMbblycdjKyJNrBRHvIXTT2aan/8ic6e2jSYLAFCHC0zMuV\n43Ui6pUDsOIWgE+oXB2UMPg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "warren-713@tickerpicker.iam.gserviceaccount.com",
+  "client_id": "104453795273272480637",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/warren-713%40tickerpicker.iam.gserviceaccount.com"
+}
