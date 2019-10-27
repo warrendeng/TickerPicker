@@ -53,8 +53,12 @@ def getInfo(tickerList):
 	  
 	# extracting data in json format 
 	tickerMap = {}
+	ctr = 0
 	for d in r.json()["results"]:
-	    name, gsid, ticker = d["name"], d["gsid"], d["ticker"]
-	    print(name, gsid, ticker, sep=' @ ')
-	    tickerMap[ticker] = {"name": name, "gsid": gsid}
+		ctr += 1
+		name, gsid, ticker = d["name"], d["gsid"], d["ticker"]
+		print(name, gsid, ticker, sep=' @ ')
+		print(ctr)
+		tickerMap[ticker] = {"name": name, "gsid": gsid}
+		# break
 	return tickerMap
