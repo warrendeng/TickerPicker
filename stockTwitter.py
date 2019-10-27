@@ -20,17 +20,20 @@ scopes = GsSession.Scopes.get_default()
 GsSession.use(client_id = client_id, client_secret = client_secret, scopes = scopes)
 
 def getSentiment(stocks):
-	tickList = getInfo(stocks.split(', '))
-	stockList = []
-	for tick in tickList:
-		tempMap = tickList[tick]
-		stockList.append(tempMap['name'])
+	tickMap = getInfo(stocks.split(', '))
+	stockMap = {}
+	for tick in tickMap:
+		tempMap = tickMap[tick]
+		stockMap[(tempMap['name'])] = tick
 	sentimentDict = {}
 	infiniteCtr = 0
 	bannedList = ['Inc', 'Corp', 'LLC', 'Co', "Ltd"]
+	stockList = list(stockMap.keys())
 	while(len(stockList) > 0):
 		infiniteCtr += 1
 		stock = stockList.pop()
+		tempMap = tickMap[stockMap[stock]]
+		num = tempMap['gsid']
 		query = {'q': stock, 'result_type': 'popular', 'count': 100, 'lang': 'en'}
 		sentimentScore = sentimentMagnitude = ctr = 0
 		for status in twitter.search(**query)['statuses']:
@@ -46,14 +49,37 @@ def getSentiment(stocks):
 			ctr += 1
 		if (infiniteCtr > 20):
 			break
+
 		if (ctr == 0):
 			temp = stock.split()
 			ban = False
 			for word in bannedList:
 				if word in temp:
 					temp.remove(word)
+					newStock = ''.join(temp)
 					ban = True
-					stockList.append(''.join(temp))
+					break
+			if (ban):
+				query = {'q': newStock, 'result_type': 'popular', 'count': 100, 'lang': 'en'}
+				sentimentScore = sentimentMagnitude = ctr = 0
+				for status in twitter.search(**query)['statuses']:
+					text = status['text']
+					document = types.Document(
+					    content=text,
+					    type=enums.Document.Type.PLAIN_TEXT)
+
+					# Detects the sentiment of the text
+					sentiment = client.analyze_sentiment(document=document).document_sentiment
+					sentimentScore += sentiment.score
+					sentimentMagnitude += sentiment.magnitude
+					ctr += 1
+				if (ctr == 0):
+					sentimentDict[num] = [0,0]
+				else:
+					sentimentDict[num] = [sentimentScore / ctr, sentimentMagnitude / ctr]
 		else:
-			sentimentDict[stock] = [sentimentScore / ctr, sentimentMagnitude / ctr]
+			sentimentDict[num] = [sentimentScore / ctr, sentimentMagnitude / ctr]
 	print(sentimentDict)
+	return sentimentDict
+
+getSentiment('msft, amzn, aapl')
