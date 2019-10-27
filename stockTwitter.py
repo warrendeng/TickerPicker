@@ -28,7 +28,9 @@ def getSentiment(stocks)
 	sentimentDict = {}
 
 	bannedList = ['Inc', 'Corp', 'LLC', 'Co', "Ltd"]
+	int infiniteCtr = 0
 	while(len(stockList) > 0):
+		infiniteCtr += 1
 		stock = stockList.pop()
 		query = {'q': stock, 'result_type': 'popular', 'count': 100, 'lang': 'en'}
 		sentimentScore = sentimentMagnitude = ctr = 0
@@ -43,7 +45,10 @@ def getSentiment(stocks)
 			sentimentScore += sentiment.score
 			sentimentMagnitude += sentiment.magnitude
 			ctr += 1
-		if (ctr == 0):
+		if (infiniteCtr > 20):
+			print('Error: infinite loop')
+			break
+		if (ctr <= 5):
 			temp = stock.split()
 			ban = False
 			for word in bannedList:
@@ -51,6 +56,8 @@ def getSentiment(stocks)
 					temp.remove(word)
 					ban = True
 					stockList.append(''.join(temp))
+					break
+			stockList.append(stock.strip())
 		else:
 			sentimentDict[stock] = [sentimentScore / ctr, sentimentMagnitude / ctr]
 	print(sentimentDict)
