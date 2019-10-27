@@ -13,7 +13,8 @@ def home():
 @app.route('/queryList', methods=['GET'])
 def queryList():
     if request.method == 'GET':
-        tickerList = request.get_json()
+        tickerList = request.get_json()["data"]
+        print(tickerList)
         tickerListMap = [getSentiment(s) for s in tickerList]
         response = app.response_class(
           response=json.dumps(tickerListMap),
