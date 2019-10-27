@@ -19,7 +19,7 @@ client_secret = '2f65f549b398ecbbe047933822dc0c2fa950f67158e9e6bbddc256ff5beaebf
 scopes = GsSession.Scopes.get_default()
 GsSession.use(client_id = client_id, client_secret = client_secret, scopes = scopes)
 
-def getSentiment(stocks)
+def getSentiment(stocks):
 	tickList = getInfo(stocks.split(', '))
 	stockList = []
 	for tick in tickList:
