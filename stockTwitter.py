@@ -91,9 +91,10 @@ def getSentiment(stocks):
 				sentimentDict[num] = sentimentScore / ctr	
 		else:
 			sentimentDict[num] = sentimentScore / ctr
+		print(sentimentDict[num])
 		if sentimentDict[num] > .1:
 			buy = 1
-		elif sentimentDict[num] < 0.02:
+		elif sentimentDict[num] < 0.04:
 			buy = -1
 		else:
 			buy = 0
