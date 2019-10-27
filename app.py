@@ -8,9 +8,9 @@ from stockTwitter import getSentiment
 
 @app.route("/")
 def home():
-    return "Try querring at /query/<ticker>!"
+    return "Try querring at /singleSentiment/<ticker>!"
 
-@app.route('/queryList', methods=['GET'])
+@app.route('/multiSentiment', methods=['GET'])
 def queryList():
     if request.method == 'GET':
         tickerList = request.get_json()["data"]
@@ -24,7 +24,9 @@ def queryList():
     else:
         return "bad"
 
-@app.route('/query/<ticker>')
+
+
+@app.route('/singleSentiment/<ticker>')
 def querySingle(ticker=None):
     return getSentiment(ticker)
 
